@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const resultFinal = volFreteIn.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-    const profit = ((valorOV) - (volFreteIn) * +1).
+    const profit = ((valorOV) - (volFreteIn)).
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
-  alert('hello I am here')
+  alert('EM BREVE, APERTA QUE DESESTRESSA!!!!')
 
   // currentAccount = accounts.find(
   //   acc => acc.username === inputLoginUsername.value
