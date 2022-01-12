@@ -114,24 +114,35 @@ document.addEventListener('DOMContentLoaded', function () {
       basePrice: base.value,
       frete: frete.value
     };
-
+    // ****resultado***
     const valorOV = (tradeDeal.valor * tradeDeal.volume * 1000);
     const valorOVS = valorOV.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+    // ****resultado Base****
     const valorBase = (tradeDeal.basePrice * tradeDeal.volume * 1000);
     const valorBases = valorBase.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
 
     const valory = Number(tradeDeal.frete);
     const valorx = Number(tradeDeal.valor);
     const freight = Number(valorx + valory);
     const freights = freight.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-    const profit = ((valorOV) - (valorBase)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    console.log(freights);
-    console.log('frete', valory);
-    console.log('preço', valorx);
-    // function freightSum() { valorC - valorBa + valorF };
+    const volFreteIn = (freight * tradeDeal.volume) * 1000;
+    const resultFinal = volFreteIn.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+    const profit = ((valorOV) - (volFreteIn)).
+      toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+
+    const realResult = (resultFinal - profit) * 1000;
+    // toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    console.log("com frete:", volFreteIn);
+    // console.log(freights);
+    // console.log('frete', valory);
+    // console.log('preço', valorx);
+    // function freightSum() { valorC - valorBa + valorF };
 
 
     let html = `
@@ -144,6 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
       ${tradeDeal.data} -
       ${freights}
       total:${valorOVS}
+      real profit:${realResult}
+     
 
       <div>
         <p class="balance__value">Base: ${tradeDeal.basePrice} - ${valorBases}</p>
@@ -151,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div>
       <p class="balance__resultado">Result: ${profit}</p>
     </div>
+
       </div>
     </div>
           `;
