@@ -1,0 +1,129 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+    rel="stylesheet"
+  />
+  
+
+
+
+  <link rel="stylesheet" href="style.css" />
+    <title>Controle ETH</title>
+</head>
+<body>
+  <nav>
+    <!-- <p class="welcome">Entre com o seu Login</p>
+    <img src="logo.png" alt="Logo" class="logo" />
+    <form class="login">
+      <input
+        type="text"
+        placeholder="user"
+        class="login__input login__input--user"
+      />
+   
+      <input
+        type="text"
+        placeholder="PIN"
+        maxlength="4"
+        class="login__input login__input--pin"
+      />
+      <button class="login__btn">&rarr;</button>
+    </form> -->
+  </nav>
+  <!-- ***Valor em CBM Header*** -->
+    <main class="app">
+        <div class="balance">
+            <div>
+              <p class="balance__label">Seus Negócios: </p>
+              </p>
+              <p class="balance__date">
+                As of <span class="date">05/12/2037</span>
+              </p>
+            </div>
+            <p class="balance__total">Total</p>
+          </div>
+
+
+    <!-- MOVEMENTS -->
+<div class="summary">
+  <p class="summary__label">In</p>
+  <p class="summary__value summary__value--in">0000€</p>
+  <p class="summary__label">Out</p>
+  <p class="summary__value summary__value--out">0000€</p>
+  <p class="summary__label">Interest</p>
+  <p class="summary__value summary__value--interest">0000€</p>
+  <button class="btn--sort">&downarrow; SORT</button>
+</div>
+<!-- summary - movimentação das cotações -->
+      <div class="movements">
+        <div class="movements__row">
+        </div>
+      </div>
+
+      <!-- <div class="operation operation--loan">
+        <div class="movements__row">
+        </div>
+      </div> -->
+
+      <!-- form inserir dados iniciais -->
+      <div class="operation operation--transfer">
+          <h2 class="form__label">Digite a operação</h2>
+          <form class="form form--transfer">
+              <input class="form__input"type="text" id="vendedor"  placeholder="vendedor"/>
+              <input class="form__input" type="text" id="comprador" placeholder="comprador"/>
+              <input class="form__input" type="number" id="cbm" placeholder="cbm"/> 
+              <input class="form__input" type="number" id="price" step='0.01' placeholder="preço"/>
+              <input class="form__input" type="text" id="data" placeholder="data"/>
+              <input class="form__input" type="number" step='0.01' id="base" placeholder="preço base" />
+              <input type="number" step='0.01' class="form__input form__input--loan-amount" id="frete" placeholder="preço frete"/>
+
+              <!-- <select name="frete" id="frete" class="form__input form__input--loan-amount">
+                <option value="volvo">GRU</option>
+                <option value="saab">PLN</option>          
+              </select>      -->
+              <button class="form__btn" id="submit" type='submit' >&rarr;</button>   
+          </form>
+      </div>
+            <!-- ***PROFIT**** -->
+      <div class="operation operation--loan">
+        <h2 class="form__label2"></h2>
+        <form class="form form--transfer">
+          <input type="number" step='0.01' class="form__input form__input--loan-amount" id="base" placeholder="preço base" />
+          <select name="frete" id="frete" class="form__input form__input--loan-amount">
+            <option value="volvo">GRU</option>
+            <option value="saab">PLN</option>          
+          </select>      
+              <input type="number" step='0.01' class="form__input form__input--loan-amount" id="frete" placeholder="preço frete"/>
+          <select name="frete" id="frete" class="form__input form__input--loan-amount">
+            <option value="volvo">GRU</option>
+            <option value="saab">PLN</option> 
+          </select>
+            <input class="form__input" type="number" id="price" step='0.01' placeholder="preço"/>
+            <!-- <input type="number" step='0.01' class="form__input form__input--loan-amount" id="frete" placeholder="preço frete"/> -->
+            <input class="form__input" type="number" id="cbm" placeholder="cbm"/> 
+            <button class="form__btn" id="index" type='submit' >&rarr;</button> 
+        </form>
+      </div>
+
+      <!-- ***INDICES******* -->
+      <div class="operation operation--close">
+        <h2 class="form__label3">Indices do Mercado</h2>
+        <div>
+          <p class="form__value" id="profit">indices</p>
+        </div>
+          
+      <script type="text/javascript" 
+      src="https://www.cepea.esalq.usp.br/br/widgetproduto.js.php?fonte=arial&tamanho=10&largura=400px&corfundo=dbd6&cortexto=ffffffff&corlinha=edy7bf&id_indicador%5B%5D=103">
+      </script>   
+    </div>
+
+</main>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
