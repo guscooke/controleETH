@@ -116,22 +116,26 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     // ****resultado***
     const valorOV = (tradeDeal.valor * tradeDeal.volume * 1000);
-    const valorOVS = valorOV.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const valorOVS = valorOV.
+      toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     // ****resultado Base****
     const valorBase = (tradeDeal.basePrice * tradeDeal.volume * 1000);
-    const valorBases = valorBase.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const valorBases = valorBase.
+      toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
     const valory = Number(tradeDeal.frete);
     const valorx = Number(tradeDeal.valor);
     const freight = Number(valorx + valory);
-    const freights = freight.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const freights = freight.
+      toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     const volFreteIn = (freight * tradeDeal.volume) * 1000;
-    const resultFinal = volFreteIn.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const resultFinal = volFreteIn.
+      toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-    const profit = ((valorOV) - (volFreteIn)).
+    const profit = ((valorOV) - (volFreteIn) * +1).
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
@@ -153,11 +157,8 @@ document.addEventListener('DOMContentLoaded', function () {
       ${tradeDeal.volume}m3  -
       R$${tradeDeal.valor} - 
       ${tradeDeal.data} -
-      ${freights}
+   
       total:${valorOVS}
-      real profit:${realResult}
-     
-
       <div>
         <p class="balance__value">Base: ${tradeDeal.basePrice} - ${valorBases}</p>
       </div>
