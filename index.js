@@ -8,7 +8,7 @@ const account2 = {
   pin: 2222,
 };
 const accounts = [account1, account2];
-
+// *********LABELS*******
 const submit = document.querySelector("#submit");
 const vendedor = document.querySelector("#vendedor");
 const comprador = document.querySelector("#comprador");
@@ -18,6 +18,7 @@ const date = document.querySelector("#data");
 const dailyDate = document.querySelector(".balance__date");
 const base = document.querySelector("#base");
 const frete = document.querySelector("#frete");
+
 
 const containerApp = document.querySelector('.app');
 // *****Password***** 
@@ -29,8 +30,11 @@ const btnLogin = document.querySelector('#index');
 // const index = document.querySelector("#display");
 // if (localStorage.indexHTML) index.innerHTML = localStorage.indexHTML;
 
-const btnIndex = document.querySelector('.form_btn');
 
+// ****CLEAR BUTTON******
+const btnIndex = document.querySelector('.form_btnC');
+
+// *****localStorage*******
 const balance = document.querySelector(".balance__total");
 if (localStorage.balanceHTML) balance.innerHTML = localStorage.balanceHTML;
 
@@ -42,9 +46,8 @@ if (localStorage.indexHTML) index.innerHTML = localStorage.indexHTML;
 
 function dateHeader() {
   const timeElapsed = Date.now();
-  const today = new Date(timeElapsed);
-  const dates = today.toLocaleDateString();
-  return dailyDate.textContent = `Data ${dates}`
+  const today = new Date(timeElapsed).toLocaleDateString();
+  return dailyDate.textContent = `${today}`
 };
 
 submit.disabled = true;
@@ -69,7 +72,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const trade = localStorage
       .getItem('trade') !== null ? getTrade : [];
-    console.log('get item:', getTrade);
+    console.log('get item:', trade);
+
+    // ********GENERATE ID******
+
+    // ****BTN ERASE ID****
+    const removeTrade = ID => {
+      trade = trade.filter(tradie => tradie.id !== ID)
+      updateTrade();
+    };
+
+
+    // *********juntar todas a functions to start
+    const init = () => {
+      updateTrade();
+      const generateID = () => Math.round(Math.random() * 1000);
+
+
+    };
+
 
     // Function to call init and localstore
     const updateTrade = () => {
@@ -90,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    // *****tem que atualizar de primeira button click****
     const volTotal = trade.reduce(getTotal, 0);
     function getTotal(total, item) {
       return Math.floor(item.volume) + total;
@@ -102,14 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // console.warn('I am mapping:', maping);
 
     let tradeDeal = {
-      id: Date.now(),
+      id: generateID(),
       seller: vendedor.value,
       buyer: comprador.value,
       valor: price.value,
       volume: cbm.value,
-      data: date.value,
+      data: dateHeader(),
       basePrice: base.value,
-      frete: frete.value
+      frete: frete.value,
+      total: volTotal.value
     };
     // ****resultado original***
     const valorOV = (tradeDeal.valor * tradeDeal.volume * 1000);
@@ -121,20 +144,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const valorBases = valorBase.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-
     const valory = Number(tradeDeal.frete);
     const valorx = Number(tradeDeal.valor);
     const freight = Number(valorx + valory);
     const freights = freight.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-
     const volFreteIn = (freight * tradeDeal.volume) * 1000;
+    console.log('oque vai dar é:', valory);
 
 
     const profit = ((valorBase) - (volFreteIn)).
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
+    // if (freight == null ? alertx : profit);
 
     // console.log("com frete:", volFreteIn);
 
@@ -145,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ${tradeDeal.buyer} -
       ${tradeDeal.volume}m3  -
       R$${tradeDeal.valor} - 
-      ${tradeDeal.data}
+      Data ${tradeDeal.data}
 
       <div>
       <p class="balance__resultado">valor contrato:${valorOVS}</p>
@@ -153,15 +174,19 @@ document.addEventListener('DOMContentLoaded', function () {
         <p class="balance__value">Base: ${tradeDeal.basePrice} - ${valorBases}</p>
         <p class="balance__resultado1">lucro: ${profit}</p>
       </div>
+      <button class="form__btnC"><p>clear</p></button>
     </div>
           `;
-    updateTrade();
+
+    // <button class="form__btnC" onClick="removeTrade"(${tradie.id})><p>clear</p></button>
+
+    init();
+
     // limpar o form
     vendedor.value = '';
     comprador.value = '';
     price.value = '';
     cbm.value = '';
-    date.value = '';
     base.value = '';
     frete.value = '';
     submit.disabled = true;
@@ -178,6 +203,8 @@ document.addEventListener('DOMContentLoaded', function () {
 //   // Display balance
 
 // };
+
+
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting

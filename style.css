@@ -333,7 +333,16 @@
     border: none;
     border-radius: 0.7rem;
     font-size: 1.8rem;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .form__btnC {
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    background-color: rgb(250, 250, 250);
     cursor: pointer;
     transition: all 0.3s;
   }
