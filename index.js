@@ -19,7 +19,6 @@ const dailyDate = document.querySelector(".balance__date");
 const base = document.querySelector("#base");
 const frete = document.querySelector("#frete");
 
-
 const containerApp = document.querySelector('.app');
 // *****Password***** 
 const inputLoginUsername = document.querySelector('.login__input--user');
@@ -131,13 +130,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     const volFreteIn = (freight * tradeDeal.volume) * 1000;
-    // const resultFinal = volFreteIn.
-    //   toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
 
     const profit = ((valorBase) - (volFreteIn)).
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-    console.log("com frete:", volFreteIn);
+
+    // console.log("com frete:", volFreteIn);
 
     let html = `
     <div class="movements__row">
