@@ -120,7 +120,7 @@
   }
   
   .balance__value {
-    padding-top: 1rem;
+   
     font-size: 1.3rem;
     font-weight: 400;
     color: #39b383;
@@ -129,13 +129,31 @@
   .balance__total {
     font-size: 2.5rem;
     font-weight: 400;
-    color: #dd5719;
+    color: #e93f14;
+  }
+
+  .balance__totalx {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #14e974;
+  }
+  .balance__frete {
+    padding-top: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #eb7b48;
   }
 
   .balance__resultado {
     font-size: 1.3rem;
     font-weight: 400;
-    color: #dd1943;
+    color: #2483c2;
+  }
+
+  .balance__resultado1 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #4873eb;
   }
   
   /* MOVEMENTS */

@@ -59,11 +59,6 @@ vendedor.onkeyup = () => {
   }
 };
 
-
-// btnIndex.addEventListener('click', function (e) {
-//   // Prevent form from submitting
-//   e.preventDefault();
-// },
 document.addEventListener('DOMContentLoaded', function () {
   dateHeader();
 
@@ -85,12 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
       // Table
       table.insertAdjacentHTML('afterbegin', html);
       localStorage.tableHTML = table.innerHTML;
+
       // volume total
       balance.textContent = `Total ${volTotal}m3`;
       localStorage.balanceHTML = balance.innerHTML;
 
+      // ***real profit****
       index.textContent = `Lucro: ${profit}`;
       localStorage.indexHTML = index.innerHTML;
+
     }
 
     const volTotal = trade.reduce(getTotal, 0);
@@ -114,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
       basePrice: base.value,
       frete: frete.value
     };
-    // ****resultado***
+    // ****resultado original***
     const valorOV = (tradeDeal.valor * tradeDeal.volume * 1000);
     const valorOVS = valorOV.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -131,23 +129,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const freights = freight.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+
     const volFreteIn = (freight * tradeDeal.volume) * 1000;
-    const resultFinal = volFreteIn.
+    // const resultFinal = volFreteIn.
+    //   toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    const profit = ((valorBase) - (volFreteIn)).
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-    const profit = ((valorOV) - (volFreteIn)).
-      toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-
-
-    const realResult = (resultFinal - profit) * 1000;
-    // toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     console.log("com frete:", volFreteIn);
-    // console.log(freights);
-    // console.log('frete', valory);
-    // console.log('preço', valorx);
-    // function freightSum() { valorC - valorBa + valorF };
-
 
     let html = `
     <div class="movements__row">
@@ -156,16 +146,13 @@ document.addEventListener('DOMContentLoaded', function () {
       ${tradeDeal.buyer} -
       ${tradeDeal.volume}m3  -
       R$${tradeDeal.valor} - 
-      ${tradeDeal.data} -
-   
-      total:${valorOVS}
-      <div>
-        <p class="balance__value">Base: ${tradeDeal.basePrice} - ${valorBases}</p>
-      </div>
-      <div>
-      <p class="balance__resultado">Result: ${profit}</p>
-    </div>
+      ${tradeDeal.data}
 
+      <div>
+      <p class="balance__resultado">valor contrato:${valorOVS}</p>
+        <p class="balance__frete">Frete incluso:${freights}</p>
+        <p class="balance__value">Base: ${tradeDeal.basePrice} - ${valorBases}</p>
+        <p class="balance__resultado1">lucro: ${profit}</p>
       </div>
     </div>
           `;
