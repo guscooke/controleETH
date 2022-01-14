@@ -77,19 +77,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // ********GENERATE ID******
 
     // ****BTN ERASE ID****
-    const removeTrade = ID => {
-      trade = trade.filter(tradie => tradie.id !== ID)
-      updateTrade();
-    };
+    // const removeTrade = ID => {
+    //   trade = trade.filter(tradie => tradie.id !== ID)
+    //   updateTrade();
+    // };
 
 
     // *********juntar todas a functions to start
-    const init = () => {
-      updateTrade();
-      const generateID = () => Math.round(Math.random() * 1000);
+    // const init = () => {
+    //   updateTrade();
+    //   const generateID = () => Math.round(Math.random() * 1000);
 
 
-    };
+    // };
 
 
     // Function to call init and localstore
@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     console.log('volume total:', volTotal);
 
+    const generateID = () => Math.round(Math.random() * 1000);
 
     // MAPPING
     // const maping = trade.map(({ value, ...rest }) => ({ ...rest, value: +value }));
@@ -180,8 +181,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // <button class="form__btnC" onClick="removeTrade"(${tradie.id})><p>clear</p></button>
 
-    init();
 
+    updateTrade();
     // limpar o form
     vendedor.value = '';
     comprador.value = '';
