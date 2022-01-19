@@ -10,16 +10,15 @@ const account2 = {
 const accounts = [account1, account2];
 // *********LABELS*******
 const submit = document.querySelector("#submit");
-const vendedor = document.querySelector("#vendedor");
-const comprador = document.querySelector("#comprador");
-const price = document.querySelector("#price");
-const cbm = document.querySelector("#cbm");
-const date = document.querySelector("#data");
-const dailyDate = document.querySelector(".balance__date");
-const base = document.querySelector("#base");
-const frete = document.querySelector("#frete");
-
-const containerApp = document.querySelector('.app');
+vendedor = document.querySelector("#vendedor"),
+  comprador = document.querySelector("#comprador"),
+  price = document.querySelector("#price"),
+  cbm = document.querySelector("#cbm"),
+  date = document.querySelector("#data"),
+  dailyDate = document.querySelector(".balance__date"),
+  base = document.querySelector("#base"),
+  frete = document.querySelector("#frete"),
+  containerApp = document.querySelector('.app');
 
 // *****Password***** 
 const inputLoginUsername = document.querySelector('.login__input--user');
@@ -43,6 +42,7 @@ if (localStorage.tableHTML) table.innerHTML = localStorage.tableHTML;
 const index = document.querySelector("#profit");
 if (localStorage.indexHTML) index.innerHTML = localStorage.indexHTML;
 
+// ****daily date*****
 function dateHeader() {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed).toLocaleDateString();
@@ -50,7 +50,7 @@ function dateHeader() {
 };
 
 submit.disabled = true;
-// disable input field
+// *****disable input field*****
 vendedor.onkeyup = () => {
   if (vendedor.value.length > 0) {
     submit.disabled = false;
@@ -62,7 +62,6 @@ vendedor.onkeyup = () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   dateHeader();
-
   document.querySelector('form').onsubmit = (e) => {
     e.preventDefault();
     // localstorage
