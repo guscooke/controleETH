@@ -19,8 +19,8 @@ const dailyDate = document.querySelector(".balance__date");
 const base = document.querySelector("#base");
 const frete = document.querySelector("#frete");
 
-
 const containerApp = document.querySelector('.app');
+
 // *****Password***** 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
@@ -29,7 +29,6 @@ const inputLoginPin = document.querySelector('.login__input--pin');
 const btnLogin = document.querySelector('#index');
 // const index = document.querySelector("#display");
 // if (localStorage.indexHTML) index.innerHTML = localStorage.indexHTML;
-
 
 // ****CLEAR BUTTON******
 const btnIndex = document.querySelector('.form_btnC');
@@ -74,50 +73,50 @@ document.addEventListener('DOMContentLoaded', function () {
       .getItem('trade') !== null ? getTrade : [];
     console.log('get item:', trade);
 
-    // ********GENERATE ID******
 
     // ****BTN ERASE ID****
-    // const removeTrade = ID => {
-    //   trade = trade.filter(tradie => tradie.id !== ID)
-    //   updateTrade();
-    // };
+    const removeTrade = ID => {
+      trade = trade.filter(tradie => tradie.id !== ID)
+      updateTrade();
+    };
 
 
     // *********juntar todas a functions to start
     // const init = () => {
     //   updateTrade();
     //   const generateID = () => Math.round(Math.random() * 1000);
-
-
     // };
-
 
     // Function to call init and localstore
     const updateTrade = () => {
       trade.push(tradeDeal);
       // console.warn('added', { trade });
       localStorage.setItem('trade', JSON.stringify(trade));
+
       // Table
       table.insertAdjacentHTML('afterbegin', html);
       localStorage.tableHTML = table.innerHTML;
 
       // volume total
-      balance.textContent = `Total ${volTotal}m3`;
+      balance.textContent = `Total ${volShow}m3`;
       localStorage.balanceHTML = balance.innerHTML;
 
       // ***real profit****
       index.textContent = `Lucro: ${profit}`;
       localStorage.indexHTML = index.innerHTML;
-
     }
 
     // *****tem que atualizar de primeira button click****
     const volTotal = trade.reduce(getTotal, 0);
     function getTotal(total, item) {
-      return Math.floor(item.volume) + total;
+      return Math.floor(item.volume) + total
     };
-    console.log('volume total:', volTotal);
 
+    // ***ternary to show first Input****
+    const volShow = volTotal === 0 ? cbm.value : volTotal;
+    console.log('volume total:', volShow);
+
+    // ********GENERATE ID******
     const generateID = () => Math.round(Math.random() * 1000);
 
     // MAPPING
@@ -145,13 +144,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const valorBases = valorBase.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+    const valorv = Number(tradeDeal.volume);
     const valory = Number(tradeDeal.frete);
     const valorx = Number(tradeDeal.valor);
     const freight = Number(valorx + valory);
+
     const freights = freight.
       toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     const volFreteIn = (freight * tradeDeal.volume) * 1000;
-    console.log('oque vai dar é:', valory);
+    console.log('o que vai dar é:', valory);
 
 
     const profit = ((valorBase) - (volFreteIn)).
@@ -175,8 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <p class="balance__value">Base: ${tradeDeal.basePrice} - ${valorBases}</p>
         <p class="balance__resultado1">lucro: ${profit}</p>
       </div>
-      <button class="form__btnC"><p>clear</p></button>
-    </div>
+       <button class="form__btnC" onClick="removeTrade(${trade.id})"><p>clear</p></button>
           `;
 
     // <button class="form__btnC" onClick="removeTrade"(${tradie.id})><p>clear</p></button>
